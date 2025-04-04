@@ -1,0 +1,44 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project]
+name = "pdm-shear"
+description = "Detect and remove unused dependencies for Python projects"
+authors = [
+    {name = "Frost Ming", email = "me@frostming.com"},
+]
+dependencies = [
+    "rich>=14.0.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+keywords = ["pdm", "pdm-plugin"]
+dynamic = ["version"]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.entry-points."pdm"]
+pdm_shear = "pdm_shear.plugin:plugin"
+
+[tool.pdm]
+plugins = [
+    "-e file:///${PROJECT_ROOT}/#egg=pdm_shear",
+]
+distribution = true
+
+[tool.pdm.version]
+source = "scm"
+
+[tool.pdm.scripts]
+test = "pytest tests"
+
+[dependency-groups]
+dev = [
+    "pytest>=7",
+    "pdm[pytest]>=2.22"
+]
