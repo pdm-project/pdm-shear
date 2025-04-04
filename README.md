@@ -10,7 +10,7 @@ Enable the plugin:
 pdm self add pdm-shear
 ```
 
-Enable the plugin in your project:
+Or, enable the plugin in your project:
 
 ```toml
 [tool.pdm]
