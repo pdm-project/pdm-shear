@@ -63,6 +63,9 @@ pdm-shear analyzes your Python source code to:
 3. Identify dependencies that aren't used in your code
 4. Optionally detect imports that don't map to any dependency
 
+> [!NOTE]
+> We are currently unable to detect build dependencies (declared as `requires` in `[build-system]`). As a result, if files used during the build, such as `pdm_build.py`, are also scanned, it may report a `missing dependencies` error. The solution is to exclude these files using the `include`/`exclude` configuration.
+
 ## License
 
 MIT
